@@ -1,6 +1,10 @@
-# VAC® — Victoria's Portfolio: código fuente (actualizado)
+# VAC® — Victoria's Portfolio: código fuente
 
-Las imágenes base64 de la portada se reemplazaron por marcadores `[IMAGEN_BASE64_nn]`; para ver el sitio hay que usar `Victoria_s_Portfolio.html`.
+Este archivo reúne el código del portfolio separado en tres partes: HTML (estructura), CSS (estilos) y JavaScript (interacciones).
+
+**Importante:** en el archivo real (`Victoria_s_Portfolio.html`) las imágenes de la portada están incrustadas en base64. Acá se reemplazaron por marcadores `[IMAGEN_BASE64_nn]` para que el código sea legible. Para que el sitio funcione hay que usar el archivo HTML completo, no este.
+
+## Imágenes incrustadas (reemplazadas por marcadores)
 
 | N.º | Tipo | Tamaño aprox. |
 |---|---|---|
@@ -27,7 +31,7 @@ Las imágenes base64 de la portada se reemplazaron por marcadores `[IMAGEN_BASE6
 | 21 | image/webp | ~164 KB |
 | 22 | image/webp | ~0 KB |
 
-## 1. HTML
+## 1. HTML (estructura)
 
 ````html
 <!DOCTYPE html>
@@ -55,7 +59,7 @@ Las imágenes base64 de la portada se reemplazaron por marcadores `[IMAGEN_BASE6
 <div><h3>Actividades y formación</h3><ul><li>CONPEST 2018: organizadora y exponente, con mérito académico.</li><li>12.º Congreso FOPEA (2023).</li><li>Jornada «Relaciones Públicas en Acción: Potenciando Sectores» (UCASAL).</li><li>Talleres y cursos: escritura académica, análisis morfológico, Derechos Humanos y discriminación, Marketing Digital (ENCIC), gestión de comunicación de riesgos (Provincia de Buenos Aires).</li><li>Investigaciones de cátedra, proyecto CIUNSa tipo B y articulación para contenido informativo sobre Chagas.</li></ul></div>
 <div><h3>Herramientas</h3><ul><li>Photoroom</li><li>Ibis</li><li>Canva</li><li>CapCut</li><li>PicsArt</li></ul></div>
 <div><h3>Idiomas</h3><ul><li>Inglés (B2)</li><li>Francés (básico)</li><li>Coreano (básico)</li></ul></div></div>
-<div class="cam rv3" id="cam"><div class="vf" aria-hidden="true"><i></i><i></i><i></i><i></i><span>Visor · fotografías pendientes de cargar</span></div><div class="strip" id="strip" role="group" aria-label="Fotografías en movimiento continuo"></div><button class="cpause" id="cp" type="button" aria-pressed="false">Pausar</button><button class="cpause cadd" id="cadd" type="button">Agregar fotos</button></div><a class="go rv3" href="#about">Ver Sobre mí completo</a></section>
+<div class="cam rv3" id="cam"><div class="vf" aria-hidden="true"><i></i><i></i><i></i><i></i><span>Visor · fotografías pendientes de cargar</span></div><div class="strip" id="strip" role="group" aria-label="Fotografías en movimiento continuo"></div><button class="cpause" id="cp" type="button" aria-pressed="false">Pausar</button></div><a class="go rv3" href="#about">Ver Sobre mí completo</a></section>
  <section class="fs" id="pr" aria-label="Proyectos"><h2 class="rv3">Proyectos<em>archivo</em></h2><p class="lead rv3">Elegí un proyecto con las flechas o el índice, o seguí bajando para recorrerlos.</p><div class="scene" id="scene"></div></section>
  <section class="fs" id="contacto" aria-label="Contacto"><h2 class="rv3">Contacto<em>hablemos</em></h2><dl class="card ct rv3"><dt>Instagram</dt><dd id="igc"></dd><dt>Correo</dt><dd><a href="mailto:victoriacruzok@gmail.com">victoriacruzok@gmail.com</a></dd><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/victoria-agustina-cruz-357405251" target="_blank" rel="noopener">linkedin.com/in/victoria-agustina-cruz-357405251</a></dd></dl><p class="gfx pl" aria-hidden="true">VAC® Archive</p></section>
 </div>
@@ -96,13 +100,11 @@ Las imágenes base64 de la portada se reemplazaron por marcadores `[IMAGEN_BASE6
  <nav class="menu" aria-label="Principal"></nav>
  <div class="wrap" id="pw"></div>
 </article>
-<button class="edbtn" id="edb" type="button" aria-pressed="false">Cargar imágenes</button>
-<p class="edtip" role="status">Modo edición: hacé clic en un marco punteado para elegir una imagen de tus archivos. Clic sobre una imagen cargada para reemplazarla o quitarla.</p>
 <noscript><p style="position:fixed;bottom:12px;left:12px">Esta página necesita JavaScript.</p></noscript>
 <script>/* ver sección JavaScript */</script></body></html>
 ````
 
-## 2. CSS
+## 2. CSS (estilos)
 
 ````css
 :root{color-scheme:light;--bg:#e2e2e2;--ink:#151515;--paper:#e7dfcf;--u:min(calc(100vw/1920),calc(100svh/900));--tu:var(--u);--ox:0;--oy:0}
@@ -285,20 +287,9 @@ a.back{display:inline-block;text-decoration:none}
 .ct{max-width:540px}.ct dd a{text-decoration:underline;text-underline-offset:3px;word-break:break-all}
 @media (max-width:760px){.cv{grid-template-columns:1fr}.trk .ph,.trk img{height:170px}}
 @media (prefers-reduced-motion:reduce){.trk{animation:none}.strip{overflow-x:auto}.cpause{display:none}}
-
-/* CARGA DE IMÁGENES */
-.up{display:block;width:100%;object-fit:cover}
-.edbtn{position:fixed;z-index:20;right:18px;bottom:18px;height:38px;padding:0 14px;background:var(--bc);color:var(--cha);border:1.5px solid var(--cha);font:700 11px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
-.edbtn[aria-pressed=true]{background:var(--cha);color:var(--bc)}.edbtn:focus-visible{outline:2px solid var(--ros);outline-offset:3px}
-.edtip{display:none;position:fixed;z-index:20;right:18px;bottom:66px;max-width:300px;padding:12px 14px;background:var(--nb);color:var(--cha);font:italic 15px/1.4 Cambria,Georgia,serif;border-left:3px solid var(--ros)}
-.ed .edtip{display:block}.ed [data-k]{outline:2px dashed var(--ros);outline-offset:3px;cursor:copy}
-.cadd{display:none;right:122px}.ed .cadd{display:block}
-@media (max-width:700px){.edbtn{bottom:62px;right:10px}.edtip{bottom:110px;right:10px}}
-.edmenu{position:fixed;z-index:10;display:flex;gap:6px;padding:8px;background:var(--nb);border:1.5px solid var(--ros)}.edmenu[hidden]{display:none}
-.edmenu button{height:32px;padding:0 10px;background:var(--cha);color:var(--nb);border:0;font:700 10px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
 ````
 
-## 3. JavaScript
+## 3. JavaScript (interacciones, navegación y datos de proyectos)
 
 ````javascript
 const D={"L":[{"line":0,"i":0,"x":20,"y":200,"w":199,"h":236,"src":"[IMAGEN_BASE64_01]"},{"line":0,"i":1,"x":219,"y":200,"w":64,"h":236,"src":"[IMAGEN_BASE64_02]"},{"line":0,"i":2,"x":283,"y":200,"w":155,"h":235,"src":"[IMAGEN_BASE64_03]"},{"line":0,"i":3,"x":438,"y":200,"w":124,"h":234,"src":"[IMAGEN_BASE64_04]"},{"line":0,"i":4,"x":562,"y":266,"w":162,"h":170,"src":"[IMAGEN_BASE64_05]"},{"line":0,"i":5,"x":724,"y":266,"w":143,"h":170,"src":"[IMAGEN_BASE64_06]"},{"line":0,"i":6,"x":868,"y":269,"w":63,"h":167,"src":"[IMAGEN_BASE64_07]"},{"line":0,"i":7,"x":931,"y":222,"w":154,"h":214,"src":"[IMAGEN_BASE64_08]"},{"line":0,"i":8,"x":1085,"y":204,"w":182,"h":229,"src":"[IMAGEN_BASE64_09]"},{"line":1,"i":0,"x":20,"y":436,"w":268,"h":324,"src":"[IMAGEN_BASE64_10]"},{"line":1,"i":1,"x":288,"y":436,"w":187,"h":324,"src":"[IMAGEN_BASE64_11]"},{"line":1,"i":2,"x":475,"y":436,"w":158,"h":322,"src":"[IMAGEN_BASE64_12]"},{"line":1,"i":3,"x":633,"y":436,"w":138,"h":322,"src":"[IMAGEN_BASE64_13]"},{"line":1,"i":4,"x":771,"y":439,"w":91,"h":320,"src":"[IMAGEN_BASE64_14]"},{"line":1,"i":5,"x":862,"y":436,"w":123,"h":323,"src":"[IMAGEN_BASE64_15]"},{"line":1,"i":6,"x":985,"y":436,"w":100,"h":322,"src":"[IMAGEN_BASE64_16]"},{"line":1,"i":7,"x":1085,"y":454,"w":70,"h":303,"src":"[IMAGEN_BASE64_17]"},{"line":1,"i":8,"x":1155,"y":445,"w":145,"h":313,"src":"[IMAGEN_BASE64_18]"}],"plate":"[IMAGEN_BASE64_19]","badge":"[IMAGEN_BASE64_20]","ext":"[IMAGEN_BASE64_21]","strap":"[IMAGEN_BASE64_22]"};
@@ -315,7 +306,7 @@ const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"]/g,c=>({
 const home=$('home'),about=$('about'),PG={home,about,archivo:$('archivo'),proyecto:$('proyecto')};
 const CATS=[['estrategica','Comunicación estratégica'],['institucional','Comunicación institucional'],['audiovisual','Audiovisual y documental'],['diseno','Diseño visual y editorial'],['investigacion','Investigación y academia']];
 const SEC=[['Contexto','Origen del proyecto, situación y antecedentes.'],['Objetivos comunicacionales','Qué se buscó comunicar y con qué propósito.'],['Proceso de trabajo','Etapas, decisiones y metodología utilizadas.'],['Desarrollo','Cómo se construyó la propuesta y su enfoque conceptual.'],['Producción','Piezas, herramientas, recursos y materiales desarrollados.'],['Resultados','Productos finales y resultados verificables.'],['Mi participación','Responsabilidades, aportes y tareas dentro del proyecto.']];
-const PHS=[[['Antecedente','4/5']],[['Esquema o documento','3/2']],[['Foto de proceso','3/2']],[['Concepto','1/1']],[['Video o pieza','16/9'],['Material original','4/5']],[['Producto final','4/5']],[['Registro de participación','3/2']]];
+const PHS=[[['Antecedente','4/5']],[],[['Foto de proceso','3/2']],[['Concepto','1/1']],[['Video o pieza','16/9'],['Material original','4/5']],[['Producto final','4/5']],[]];
 const RT=['4/5','16/9','1/1','3/4','21/9'];
 /* PROYECTOS: completar acá. Cada objeto es una página. Lo vacío se muestra como "pendiente".
    Ejemplo: title:'…', year:'…', format:'…', role:'…', cover:'foto.jpg', tags:['…'],
@@ -330,19 +321,18 @@ const P=[
 const pad=n=>String(n).padStart(2,'0'),catName=k=>CATS.find(c=>c[0]===k)[1],pend='<span class="pend">Pendiente</span>';
 document.querySelectorAll('.menu').forEach(m=>m.innerHTML=[['home','inicio','Inicio'],['about','about','Sobre mí'],['proyectos','proyectos','Proyectos'],['contacto','contacto','Contacto']].map(([p,h,t])=>`<a href="#${h}" data-p="${p}">${t}</a>`).join(''));
 const card=p=>{const i=P.indexOf(p),n=pad(i+1),h='#'+p.slug,fl=CATS.findIndex(c=>c[0]===p.cat)%2?' fl':'';
- return `<article class="pj${fl}"><a class="pj-img" href="${h}" aria-label="Abrir proyecto ${n}">${p.cover?`<img src="${esc(p.cover)}" alt="" style="aspect-ratio:${RT[i%5]}">`:`<div class="ph" data-k="${p.slug}:cover" style="aspect-ratio:${RT[i%5]}"><b>Pendiente</b>Imagen principal</div>`}</a><div class="pj-t"><span class="pj-n">${n}</span><h4>${p.title?esc(p.title):'Título pendiente'}</h4><div class="tg"><span>${catName(p.cat)}</span>${p.title?'':'<span>Contenido pendiente</span>'}${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div><a class="go" href="${h}">Ver proyecto ↗</a></div></article>`};
+ return `<article class="pj${fl}"><a class="pj-img" href="${h}" aria-label="Abrir proyecto ${n}">${p.cover?`<img src="${esc(p.cover)}" alt="" style="aspect-ratio:${RT[i%5]}">`:`<div class="ph" style="aspect-ratio:${RT[i%5]}"><b>Pendiente</b>Imagen principal</div>`}</a><div class="pj-t"><span class="pj-n">${n}</span><h4>${p.title?esc(p.title):'Título pendiente'}</h4><div class="tg"><span>${catName(p.cat)}</span>${p.title?'':'<span>Contenido pendiente</span>'}${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div><a class="go" href="${h}">Ver proyecto ↗</a></div></article>`};
 $('idx').innerHTML=CATS.map(([k,n],i)=>{const c=P.filter(p=>p.cats.includes(k)).length;return `<li><a href="#categoria-${k}"><span>${i+1}</span><span>${n}</span><small>${c} proyecto${c==1?'':'s'}</small></a></li>`}).join('');
-var IMG={},curP;
-function drawCats(){$('cats').innerHTML=CATS.map(([k,n],i)=>`<section class="cat rv2" id="cat-${k}"><header class="cat-h"><span>${i+1}</span><h3>${n}</h3></header>${(L=>L.length?L.map(card).join(''):'<p class="tx pd" style="margin-top:24px"><b>Contenido pendiente de cargar</b></p>')(P.filter(p=>p.cats.includes(k)))}</section>`).join('');hydrate($('cats'))}drawCats();
-const phone=p=>`<div class="pps"><div class="pv"><div class="phn"><div class="reel">${[1,2,3,4,5].map(n=>`<div class="sl"><div class="ph" data-k="${p.slug}:tel:${n}" style="aspect-ratio:1/1"><b>Pendiente</b>Pieza ${n}</div><p class="pend">Texto de la publicación pendiente.</p></div>`).join('')}</div></div><div class="pcap"><span class="pj-n pn">01</span><p class="pend">Maqueta de carrusel para redes: las piezas avanzan con el scroll.</p></div></div></div>`;
-function renderProject(p){curP=p;$('proyecto').dataset.t=p.theme||'';const i=P.indexOf(p),pv=P[i-1],nx=P[i+1],v=x=>x?esc(x):pend;
+$('cats').innerHTML=CATS.map(([k,n],i)=>`<section class="cat rv2" id="cat-${k}"><header class="cat-h"><span>${i+1}</span><h3>${n}</h3></header>${(L=>L.length?L.map(card).join(''):'<p class="tx pd" style="margin-top:24px"><b>Contenido pendiente de cargar</b></p>')(P.filter(p=>p.cats.includes(k)))}</section>`).join('');
+const phone=()=>`<div class="pps"><div class="pv"><div class="phn"><div class="reel">${[1,2,3,4,5].map(n=>`<div class="sl"><div class="ph" style="aspect-ratio:1/1"><b>Pendiente</b>Pieza ${n}</div><p class="pend">Texto de la publicación pendiente.</p></div>`).join('')}</div></div><div class="pcap"><span class="pj-n pn">01</span><p class="pend">Maqueta de carrusel para redes: las piezas avanzan con el scroll.</p></div></div></div>`;
+function renderProject(p){$('proyecto').dataset.t=p.theme||'';const i=P.indexOf(p),pv=P[i-1],nx=P[i+1],v=x=>x?esc(x):pend;
  $('pw').innerHTML=`<h2 class="rv2">${p.title?esc(p.title):'Título'}${p.title?'':'<em>pendiente</em>'}</h2>
 <dl class="meta rv2"><div><dt>Categoría</dt><dd>${p.cats.map(catName).join(' · ')}</dd></div><div><dt>Año</dt><dd>${v(p.year)}</dd></div><div><dt>Formato</dt><dd>${v(p.format)}</dd></div><div><dt>Rol</dt><dd>${v(p.role)}</dd></div></dl>${p.scope?`<p class="scope rv2"><b>Alcance</b>${esc(p.scope)}</p>`:''}
 <div class="pbody"><ol class="toc" aria-label="Apartados">${SEC.map((s,j)=>`<li><button type="button" data-s="${j}"><span>${j+1}</span>${s[0]}</button></li>`).join('')}</ol><div>${SEC.map(([name,fn],j)=>{
- const t=p.sections[name],m=p.media[name],md=(m&&m.length?m.map(x=>x.video?`<video controls preload="metadata" src="${esc(x.video)}" style="width:100%;aspect-ratio:${x.ratio||'16/9'}"></video>`:`<img src="${esc(x.src)}" alt="${esc(x.alt||'')}" style="width:100%;aspect-ratio:${x.ratio||'4/5'};object-fit:cover">`):PHS[j].map(([l,r],q)=>`<div class="ph" data-k="${p.slug}:${j}:${q}" style="aspect-ratio:${r}"><b>Pendiente</b>${l}</div>`)).join('');
- return `<section class="sx rv2${j%2?' fl':''}${md?'':' nm'}" id="s${j}"><div class="sh"><span>${j+1}</span><h3>${name}</h3></div><div class="sc"><div>${t?`<div class="tx">${t.split('\n\n').map(x=>`<p>${esc(x)}</p>`).join('')}</div>`:`<div class="tx pd"><b>Contenido pendiente</b><br>${fn}</div>`}</div>${md?`<div class="mm">${md}</div>`:''}</div>${p.kind==='social'&&j===4?phone(p):''}</section>`}).join('')}</div></div>
+ const t=p.sections[name],m=p.media[name],md=(m&&m.length?m.map(x=>x.video?`<video controls preload="metadata" src="${esc(x.video)}" style="width:100%;aspect-ratio:${x.ratio||'16/9'}"></video>`:`<img src="${esc(x.src)}" alt="${esc(x.alt||'')}" style="width:100%;aspect-ratio:${x.ratio||'4/5'};object-fit:cover">`):PHS[j].map(([l,r])=>`<div class="ph" style="aspect-ratio:${r}"><b>Pendiente</b>${l}</div>`)).join('');
+ return `<section class="sx rv2${j%2?' fl':''}${md?'':' nm'}" id="s${j}"><div class="sh"><span>${j+1}</span><h3>${name}</h3></div><div class="sc"><div>${t?`<div class="tx">${t.split('\n\n').map(x=>`<p>${esc(x)}</p>`).join('')}</div>`:`<div class="tx pd"><b>Contenido pendiente</b><br>${fn}</div>`}</div>${md?`<div class="mm">${md}</div>`:''}</div>${p.kind==='social'&&j===4?phone():''}</section>`}).join('')}</div></div>
 <nav class="pager" aria-label="Entre proyectos"><span>${pv?`<a class="go" href="#${pv.slug}">← Proyecto ${pad(i)}</a>`:''}</span><a class="go" href="#archivo">Volver al archivo</a><span>${nx?`<a class="go" href="#${nx.slug}">Proyecto ${pad(i+2)} →</a>`:''}</span></nav>`;
- $('pw').querySelectorAll('.toc button').forEach(b=>b.onclick=()=>$('s'+b.dataset.s).scrollIntoView({behavior:reduce?'auto':'smooth'}));hydrate($('pw'))}
+ $('pw').querySelectorAll('.toc button').forEach(b=>b.onclick=()=>$('s'+b.dataset.s).scrollIntoView({behavior:reduce?'auto':'smooth'}))}
 function reveal(pg){pg._io&&pg._io.disconnect();const io=pg._io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{root:pg,threshold:.08});pg.querySelectorAll('.rv2').forEach(e=>{e.classList.remove('in');io.observe(e)})}
 let first=true,cur=-1;
 const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),prog=e=>{const r=e.getBoundingClientRect();return clamp(-r.top/(r.height-innerHeight))},beh=()=>reduce||first?'auto':'smooth';
@@ -357,44 +347,14 @@ $('cue').onclick=()=>$('sm').scrollIntoView({behavior:reduce?'auto':'smooth'});
 const g=about.querySelector('.grid').cloneNode(true);g.querySelectorAll('.rv').forEach(e=>{e.classList.remove('rv');e.classList.add('rv3')});g.querySelector('.card').classList.add('pl');g.querySelector('.copy').classList.add('pl2');$('smx').appendChild(g);
 $('igc').appendChild(about.querySelector('.ig').cloneNode(true));
 const fio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');fio.unobserve(e.target)}}),{root:home,threshold:.08});document.querySelectorAll('.flow .rv3').forEach(e=>fio.observe(e));
-function tick(){$('edb').style.display=home.classList.contains('on')&&home.scrollTop<innerHeight*.5?'none':'';$('hm').classList.toggle('show',home.scrollTop>innerHeight*.5);
+function tick(){$('hm').classList.toggle('show',home.scrollTop>innerHeight*.5);
  const i=Math.min(CATS.length-1,Math.floor(prog(sc)*CATS.length));if(i!==cur)setMon(i);
  document.querySelectorAll('.pps').forEach(e=>{const q=prog(e),n=5;e.querySelector('.reel').style.transform=`translateX(${-q*(n-1)*100}%)`;e.querySelector('.pn').textContent=pad(Math.round(q*(n-1))+1)});
  if(!reduce)document.querySelectorAll('.pl,.pl2').forEach(e=>{const r=e.getBoundingClientRect();e.style.setProperty('--pp',(r.top+r.height/2-innerHeight/2)/innerHeight*-28)})}
 const PHOTOS=[];/* Fotos reales del visor: rutas a archivos existentes en la carpeta, ej. 'fotos/01.jpg'. Vacío = marcadores pendientes. */
-const VR=['4/5','3/2','1/1','16/9','3/4','4/5'];
-function buildStrip(){const up=Object.keys(IMG).filter(k=>k.startsWith('vis:')).sort();let it=[...PHOTOS.map(x=>[x,'']),...up.map(k=>[IMG[k],k])];const n=it.length;if(!n)it=Array(6).fill(0);while(it.length<6)it=it.concat(it);
- const set=it.map((x,i)=>x?`<img class="up" ${x[1]?`data-k="${x[1]}"`:''} src="${esc(x[0])}" alt="" style="--r:${VR[i%6]}">`:`<div class="ph" data-k="vis:new" style="--r:${VR[i%6]}"><b>Pendiente</b>Fotografía ${pad(i+1)}</div>`).join('');
- $('strip').innerHTML=`<div class="trk">${set}<span aria-hidden="true" style="display:contents">${set.replace(/ data-k="[^"]*"/g,'')}</span></div>`}buildStrip();
+const VR=['4/5','3/2','1/1','16/9','3/4','4/5'],fr=n=>PHOTOS[n]?`<img src="${esc(PHOTOS[n])}" alt="" style="aspect-ratio:${VR[n%6]}">`:`<div class="ph" style="--r:${VR[n%6]}"><b>Pendiente</b>Fotografía ${pad(n+1)}</div>`,set=Array.from({length:Math.max(PHOTOS.length,6)},(_,n)=>fr(n)).join('');
+$('strip').innerHTML=`<div class="trk">${set}<span aria-hidden="true" style="display:contents">${set}</span></div>`;
 $('cp').onclick=()=>{const q=$('cam').classList.toggle('paused');$('cp').setAttribute('aria-pressed',q);$('cp').textContent=q?'Reanudar':'Pausar'};
-/* IMÁGENES PROPIAS: se eligen (o se arrastran) desde tus archivos; se guardan en este navegador (IndexedDB) si el entorno lo permite */
-const IDBP=new Promise(r=>{try{const q=indexedDB.open('vac',1);q.onupgradeneeded=()=>q.result.createObjectStore('i');q.onsuccess=()=>r(q.result);q.onerror=()=>r(null);q.onblocked=()=>r(null);setTimeout(()=>r(null),2500)}catch(e){r(null)}});
-const idb=(m,k,v)=>IDBP.then(d=>d?new Promise(r=>{try{const t=d.transaction('i','readwrite').objectStore('i'),q=m==='put'?t.put(v,k):t.delete(k);q.onsuccess=()=>r(1);q.onerror=()=>r(0);setTimeout(()=>r(0),4000)}catch(e){r(0)}}):0);
-const tip=document.querySelector('.edtip'),TIP0='Modo edición: hacé clic en un marco punteado para elegir una imagen, o arrastrá una imagen desde tus archivos sobre el marco. Clic en una imagen cargada para reemplazarla o quitarla.',say=m=>{tip.textContent=m};
-function hydrate(r){r.querySelectorAll('.ph[data-k]').forEach(e=>{const u=IMG[e.dataset.k];if(!u)return;const i=new Image();i.src=u;i.alt='';i.className='up';i.dataset.k=e.dataset.k;i.setAttribute('style',e.getAttribute('style')||'');e.replaceWith(i)})}
-function refreshAll(){drawCats();buildStrip();if($('proyecto').classList.contains('on')){renderProject(curP);$('pw').querySelectorAll('.rv2').forEach(e=>e.classList.add('in'))}}
-const inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.tabIndex=-1;inp.setAttribute('aria-hidden','true');inp.style.cssText='position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0';document.body.append(inp);let cb;
-inp.onchange=()=>{const fs=[...inp.files];inp.value='';fs.length&&cb(fs)};
-const pick=(multi,fn)=>{inp.multiple=!!multi;cb=fn;try{inp.click()}catch(e){say('Este entorno no permite abrir el selector de archivos. Probá arrastrando la imagen sobre el marco, o abrí el archivo HTML directamente en Chrome o Edge.')}};
-const put=f=>{if(!f||!/^image\//.test(f.type)){say('El archivo elegido no es una imagen (usá JPG, PNG, WebP, etc.).');return 0}return 1};
-async function persist(k,f){say((await idb('put',k,f))?'Imagen cargada y guardada en este navegador.':'Imagen cargada, pero este entorno no permite guardarla: se verá hasta que recargues la página.')}
-const setImg=(k,f)=>{IMG[k]&&URL.revokeObjectURL(IMG[k]);IMG[k]=URL.createObjectURL(f)};
-const loadOne=(k,f)=>{if(!put(f))return;setImg(k,f);refreshAll();persist(k,f)};
-const loadVis=fs=>{let n=0;fs.forEach((f,i)=>{if(!put(f))return;const k='vis:'+Date.now()+'-'+i;setImg(k,f);persist(k,f);n++});n&&refreshAll()};
-const one=k=>pick(0,([f])=>loadOne(k,f)),addVis=()=>pick(1,loadVis);
-const menu=document.createElement('div');menu.className='edmenu';menu.hidden=true;menu.innerHTML='<button type="button" data-a="r">Reemplazar</button><button type="button" data-a="q">Quitar</button><button type="button" data-a="c">Cancelar</button>';document.body.append(menu);let mk;
-menu.onclick=e=>{const a=e.target.dataset.a;if(!a)return;menu.hidden=true;if(a==='r')one(mk);if(a==='q'){idb('del',mk);URL.revokeObjectURL(IMG[mk]);delete IMG[mk];refreshAll();say('Imagen quitada.')}};
-const ed=()=>document.body.classList.contains('ed');
-document.addEventListener('click',e=>{if(!ed())return;if(!menu.hidden&&!e.target.closest('.edmenu'))menu.hidden=true;const t=e.target.closest('[data-k]');if(!t)return;e.preventDefault();e.stopPropagation();const k=t.dataset.k;
- if(k==='vis:new')return addVis();
- if(IMG[k]){mk=k;menu.style.left=Math.max(8,Math.min(e.clientX,innerWidth-250))+'px';menu.style.top=Math.max(8,Math.min(e.clientY,innerHeight-60))+'px';menu.hidden=false;return}
- one(k)},true);
-['dragover','drop'].forEach(n=>document.addEventListener(n,e=>{if(!ed())return;const t=e.target.closest&&e.target.closest('[data-k]');if(!t)return;e.preventDefault();if(n!=='drop')return;const fs=[...e.dataTransfer.files];if(!fs.length)return;t.dataset.k==='vis:new'?loadVis(fs):loadOne(t.dataset.k,fs[0])}));
-addEventListener('error',e=>{if(ed())say('Error técnico: '+e.message)});
-$('cadd').onclick=addVis;
-$('edb').onclick=()=>{const o=document.body.classList.toggle('ed');$('edb').setAttribute('aria-pressed',o);$('edb').textContent=o?'Terminar edición':'Cargar imágenes';menu.hidden=true;if(o)say(TIP0)};
-tip.textContent=TIP0;
-IDBP.then(d=>{if(!d)return;try{const t=d.transaction('i').objectStore('i'),kq=t.getAllKeys(),vq=t.getAll();vq.onsuccess=()=>{kq.result.forEach((k,i)=>IMG[k]=URL.createObjectURL(vq.result[i]));refreshAll()}}catch(e){}});
 let tk=0;const req=()=>tk||(tk=requestAnimationFrame(()=>{tk=0;tick()}));
 home.addEventListener('scroll',req,{passive:true});PG.proyecto.addEventListener('scroll',req,{passive:true});addEventListener('resize',req);
 function show(p,arg){
